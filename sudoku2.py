@@ -12,3 +12,15 @@ def resolution_sudoku(sol):
     est_arrive = False
     global sol2
     placer(p,N,sol)
+    
+fenetre=Tk()  
+cadre=Frame(fenetre,borderwidth=4)
+
+texte1=Label(fenetre,text="Sudoku",fg="blue",font=ecriture)
+texte1.pack(side="top")
+
+canevas=Canvas(fenetre,height=500,width=500,bg="white")  #création
+canevas.pack()  
+
+
+fenetre.mainloop()
