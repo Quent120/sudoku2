@@ -1,1 +1,12 @@
-Première fonction resolution du sudoky
+def l_region(p,N,sol):
+    reg = []
+    for i in range(0,len(sol)):
+        if(i//(((N+1)**2)//3) == p//(((N+1)**2)//3)):
+            if(i%(N+1) < int(sqrt(N+1)) and p%(N+1) < int(sqrt(N+1))):
+                reg.append((sol[i],i))
+            if(i%(N+1) < 2*int(sqrt(N+1)) and i%(N+1) >= int(sqrt(N+1)) and p%(N+1) < 2*int(sqrt(N+1)) and p%(N+1) >= int(sqrt(N+1))):
+                reg.append((sol[i],i))
+            if(i%(N+1) < N+1 and i%(N+1) >= 2*int(sqrt(N+1)) and p%(N+1) < N+1 and p%(N+1) >=2*int(sqrt(N+1))):
+                reg.append((sol[i], i))
+                
+    return reg
