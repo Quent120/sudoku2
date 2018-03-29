@@ -7,52 +7,11 @@ import time
 #S : affiche dans un canvas de la grille en cours de remplissage
 def resolution_sudoku(sol):
     p = 0
-    placer(p,sol)
-    
-def placer(p, sol):
-    if(p==81):
-        print(sol)
-    else:
-        if(sol[p] == 0):
-            for i in range (1,10):
-                sol[p] = i
-                afficher_sol(sol,8)
-                if(ajout_possible(p,sol)):
-                    placer(p+1,sol)
-                sol.pop()
-        else:
-            placer(p+1,sol)
-           
-
-def ajout_possible(p,sol):
-    Ok = True
-
-    
-    
-def ligne(p, sol):
-    W=[]
-    for i in range(81):
-        if p//9 == i//9:
-            W.append(i)
-    for i in W:
-        if sol[i] == sol[p] and p != i:
-            return False
-    return True
-
-    
-    
-def colonne(p, sol):
-     W=[]
-     for i in range(0,81):
-        if p%9 == i%9:
-            W.append(i)
-     for i in W:
-        if sol[i] == sol[p] and p != i:
-            return False
-     return True
-
-def region(p,sol):
-    
+    N = int(sqrt(len(sol)+1)) - 1
+    global est_arrive
+    est_arrive = False
+    global sol2
+    placer(p,N,sol)
     
     
 #E :sol : liste du SUDOKU 
@@ -76,15 +35,11 @@ def afficher_sol(sol, N):
     
     fenetre.update()
     
-<<<<<<< HEAD
 
     
     
     
 s = [0, 8, 7, 0, 0, 0, 5, 2, 0,
-=======
-s = [0, 8, 7, 0, 0, 0, 5, 2, 0, 
->>>>>>> 5ef0507f5da0643c5f91af8286c388cd404c9d2e
 9, 1, 0, 5, 0, 2, 0, 4, 6,
 2, 0, 0, 0, 0, 0, 0, 0, 7,
 0, 9, 0, 0, 2, 0, 0, 1, 0,
@@ -105,7 +60,7 @@ cadre=Frame(fenetre,borderwidth=4)
 canvas= Canvas(fenetre,height=450,width=450,bg="white")  #création
 canvas.pack()  
 
-resolution_sudoku(s)
+
 afficher_sol(s, 8)
 
 fenetre.mainloop()
